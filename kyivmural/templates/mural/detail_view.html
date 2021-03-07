@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Mural:</h2>
+    <ul>
+        <li>
+            id: {{ mural.id }}
+        </li>
+        <li>
+            position: {{ mural.geo_position.latitude }}, {{ mural.geo_position.longitude }}
+        </li>
+        <li>
+            artist: {{ mural.artist_name_en }}
+        </li>
+        <li>
+            address: {{ mural.description.en.address }}
+        </li>
+        <li>
+            description: {{ mural.description.en.name }}
+        </li>
+    </ul>
+{% endblock %}

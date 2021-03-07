@@ -10,8 +10,8 @@ def get_murals():
     return _get_from_kyivmural_api("murals")
 
 
-def get_mural(mural_id):
-    return _get_from_kyivmural_api(f"murals/{mural_id}")
+def get_mural(mural_id, artist_name):
+    return _get_from_kyivmural_api(f"murals/{mural_id}/{artist_name}")
 
 
 def get_artists():
