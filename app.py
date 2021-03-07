@@ -1,0 +1,1 @@
+from kyivmural import app
