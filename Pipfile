@@ -10,6 +10,7 @@ flask = "*"
 pylint = "*"
 black = "*"
 pytest = "*"
+bump2version = "*"
 
 [requires]
 python_version = "3.8"
