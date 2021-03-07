@@ -1,6 +1,7 @@
-from kyivmural import app
 from flask import render_template
-from kyivmural.queries.queries import get_murals, get_mural
+
+from kyivmural import app
+from kyivmural.queries.queries import get_mural, get_murals
 
 
 @app.route("/")

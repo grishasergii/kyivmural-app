@@ -1,5 +1,6 @@
-from flask import Flask
 import os
+
+from flask import Flask
 
 app = Flask(__name__)
 app.config["KYIVMURAL_API_ENDPOINT"] = os.environ["KYIVMURAL_API_ENDPOINT"]

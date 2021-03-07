@@ -1,9 +1,10 @@
-from flask import current_app
 from urllib.parse import urlparse
-from aws_requests_auth.boto_utils import BotoAWSRequestsAuth
+
 import requests
-from urllib3.util.retry import Retry
+from aws_requests_auth.boto_utils import BotoAWSRequestsAuth
+from flask import current_app
 from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 
 def get_murals():
@@ -23,10 +24,7 @@ def get_artist(artist_id):
 
 
 def _requests_retry_session(
-        retries=5,
-        backoff_factor=2,
-        status_forcelist=(500, 502, 503, 504),
-        session=None
+    retries=5, backoff_factor=2, status_forcelist=(500, 502, 503, 504), session=None
 ):
     session = session or requests.Session()
     retry = Retry(
@@ -35,7 +33,7 @@ def _requests_retry_session(
         connect=retries,
         backoff_factor=backoff_factor,
         status_forcelist=status_forcelist,
-        allowed_methods={"GET"}
+        allowed_methods={"GET"},
     )
     adapter = HTTPAdapter(max_retries=retry)
     session.mount("https://", adapter)
@@ -48,9 +46,7 @@ def _get_from_kyivmural_api(resource):
     api_host = urlparse(api_url).netloc
 
     auth = BotoAWSRequestsAuth(
-        aws_host=api_host,
-        aws_region=region,
-        aws_service="execute-api"
+        aws_host=api_host, aws_region=region, aws_service="execute-api"
     )
 
     requests_session = _requests_retry_session()
