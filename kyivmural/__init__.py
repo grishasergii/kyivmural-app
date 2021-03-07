@@ -8,4 +8,7 @@ app.config["AWS_REGION"] = os.environ["AWS_DEFAULT_REGION"]
 
 # import here as described in as described in
 # https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+from kyivmural.errors import bp as errors_bp  # pylint: disable=wrong-import-position
+
+app.register_blueprint(errors_bp)
 from kyivmural import routes  # pylint: disable=wrong-import-position
