@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Murals:</h2>
+    {% for mural in murals %}
+    <div><p>Mural {{ mural.id }} located at {{ mural.geo_position.latitude }}, {{ mural.geo_position.longitude }}</p></div>
+    {% endfor %}
+{% endblock %}

@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 flask = "*"
+boto3 = "*"
+aws-requests-auth = "*"
 
 [dev-packages]
 pylint = "*"
@@ -14,3 +16,6 @@ bump2version = "*"
 
 [requires]
 python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
