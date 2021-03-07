@@ -4,7 +4,6 @@ from kyivmural.main import bp
 from kyivmural.queries.queries import get_mural, get_murals
 
 
-@bp.route("/")
 @bp.route("/index")
 def index():
     return render_template("index.html", title="KYIVMURAL")

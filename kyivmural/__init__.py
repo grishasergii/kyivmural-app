@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, current_app
+from flask import Flask, g, redirect, url_for
 from flask_babel import Babel
 from config import Config
 
@@ -16,10 +16,24 @@ def create_app(config_class=Config):
 
     babel.init_app(app)
 
-    from kyivmural.main import bp as main_bp
-    app.register_blueprint(main_bp)
+    @app.route("/")
+    def index():
+        return redirect(url_for("main.index", lang_code=g.get("lang_code", "uk")))
 
+    from kyivmural.main import bp as main_bp
     from kyivmural.errors import bp as errors_bp
+
+    @main_bp.url_defaults
+    @errors_bp.url_defaults
+    def add_language_code(endpoint, values):
+        values.setdefault("lang_code", g.get("lang_code", "uk"))
+
+    @main_bp.url_value_preprocessor
+    @errors_bp.url_value_preprocessor
+    def pull_lang_code(endpoint, values):
+        g.lang_code = values.pop("lang_code", "uk")
+
+    app.register_blueprint(main_bp)
     app.register_blueprint(errors_bp)
 
     return app
@@ -27,5 +41,4 @@ def create_app(config_class=Config):
 
 @babel.localeselector
 def get_locale():
-    return "en"
-    return request.accept_languages.best_match(current_app.config['LANGUAGES'])
+    return g.get("lang_code", "uk")
