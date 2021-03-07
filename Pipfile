@@ -7,13 +7,13 @@ name = "pypi"
 flask = "*"
 boto3 = "*"
 aws-requests-auth = "*"
-isort = "*"
 
 [dev-packages]
 pylint = "*"
 black = "*"
 pytest = "*"
 bump2version = "*"
+isort = "*"
 
 [requires]
 python_version = "3.8"

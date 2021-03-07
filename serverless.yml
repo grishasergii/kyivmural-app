@@ -8,6 +8,8 @@ provider:
 functions:
   app:
     handler: wsgi_handler.handler
+    environment:
+      KYIVMURAL_API_ENDPOINT: dummy
     events:
       - http: ANY /
       - http: "ANY {proxy+}"
