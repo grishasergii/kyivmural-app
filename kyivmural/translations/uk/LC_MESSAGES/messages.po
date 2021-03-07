@@ -1,0 +1,57 @@
+# Ukrainian translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-07 22:29+0100\n"
+"PO-Revision-Date: 2021-03-07 22:31+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: uk\n"
+"Language-Team: uk <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: kyivmural/templates/base.html:4 kyivmural/templates/base.html:8
+msgid "Kyivmural"
+msgstr "Київмурал"
+
+#: kyivmural/templates/base.html:15
+msgid "Murals"
+msgstr "Мурали"
+
+#: kyivmural/templates/base.html:18
+msgid "Artists"
+msgstr "Художники"
+
+#: kyivmural/templates/base.html:21
+msgid "About"
+msgstr "Про проєкт"
+
+#: kyivmural/templates/errors/404.html:4
+msgid "Not Found"
+msgstr "Не знайдено"
+
+#: kyivmural/templates/errors/404.html:5
+msgid "What you are looking for is not there"
+msgstr "Ви шукаєте або не те, або не в тому місці"
+
+#: kyivmural/templates/errors/404.html:6 kyivmural/templates/errors/500.html:6
+msgid "Back"
+msgstr "Назад"
+
+#: kyivmural/templates/errors/500.html:4
+msgid "An unexpected error has occurred"
+msgstr "Трапилась непередбачувана халепа"
+
+#: kyivmural/templates/errors/500.html:5
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr "Ми проінформували адміністратора. Вибачте за тимчасові незручності!"
+
