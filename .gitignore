@@ -139,3 +139,12 @@ cython_debug/
 
 # Pycharm
 .idea
+
+# Serverless
+.serverless
+serverless_wsgi.py
+wsgi_handler.py
+.serverless-wsgi
+
+# NPM
+node_modules
