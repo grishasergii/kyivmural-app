@@ -5,7 +5,7 @@
     <div>
         <p>
             Mural {{ mural.id }} located at {{ mural.geo_position.latitude }}, {{ mural.geo_position.longitude }} by {{ mural.artist_name_en }}
-            <a href="{{ url_for('mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">more</a>
+            <a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">more</a>
         </p>
     </div>
     {% endfor %}
