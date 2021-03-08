@@ -6,7 +6,8 @@ from kyivmural.queries.queries import get_mural, get_murals
 
 @bp.route("/index")
 def index():
-    return render_template("index.html", title="KYIVMURAL")
+    murals = get_murals()
+    return render_template("index.html", title="KYIVMURAL", murals=murals)
 
 
 @bp.route("/murals")

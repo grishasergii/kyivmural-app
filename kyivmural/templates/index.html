@@ -1,5 +1,53 @@
 {% extends "base.html" %}
 
+{% block scripts %}
+    {{ super() }}
+    <script>
+        function initMap() {
+            const kyiv_map_center = { lat: 50.450487, lng: 30.519516 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: kyiv_map_center,
+            });
+
+            {% for mural in murals %}
+                const content_string_{{ loop.index }} =
+                    '<p><img src="{{ url_for('static', filename='img/1x1.jpg') }}" class="img-info-window" id="lazy-{{ mural.id }}" data-src="{{ mural.thumbnail }}"></p>';
+
+                const info_window_{{ loop.index }} = new google.maps.InfoWindow({
+                    content: content_string_{{ loop.index }},
+                    domready: (function(img_id) {
+                        return function () {
+                            var lazy_img = document.getElementById(img_id);
+                            if (lazy_img) {
+                                lazy_img.src = lazy_img.getAttribute('data-src');
+                            }
+                        };
+                    })('lazy-{{ mural.id }}')
+                });
+
+                const marker_{{ loop.index }} = new google.maps.Marker({
+                    position: { lat: {{ mural.geo_position.latitude }}, lng: {{ mural.geo_position.longitude }} },
+                    map: map,
+                });
+                marker_{{ loop.index }}.addListener("click", () => {
+                    info_window_{{ loop.index }}.open(map, marker_{{ loop.index }});
+                });
+            {% endfor %}
+        }
+    </script>
+{% endblock %}
+
 {% block content %}
     <h1>Kyivmural home page</h1>
+    <div class="container-fluid container-map">
+        <div class="row">
+            <div id="map" style="width: 100%; height: 500px"></div>
+        </div>
+    </div>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZbZ028Zs_V9dZbn9nEpAXNP27gJM4KGs&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
 {% endblock %}
