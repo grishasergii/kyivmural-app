@@ -17,6 +17,7 @@ def create_app(config_class=Config):
 
     babel.init_app(app)
     app.jinja_env.globals.update(get_locale=get_locale)
+    app.jinja_env.globals.update(GOOGLE_MAPS_API_KEY=os.environ["GOOGLE_MAPS_API_KEY"])
 
     @app.route("/")
     def index():
