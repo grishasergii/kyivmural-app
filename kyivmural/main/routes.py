@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, current_app, g
 
 from kyivmural.main import bp
 from kyivmural.queries.queries import get_mural, get_murals
