@@ -15,16 +15,17 @@
                     '<p><img src="{{ url_for('static', filename='img/1x1.jpg') }}" class="img-info-window" id="lazy-{{ mural.id }}" data-src="{{ mural.thumbnail }}"></p>';
 
                 const info_window_{{ loop.index }} = new google.maps.InfoWindow({
-                    content: content_string_{{ loop.index }},
-                    domready: (function(img_id) {
-                        return function () {
-                            var lazy_img = document.getElementById(img_id);
-                            if (lazy_img) {
-                                lazy_img.src = lazy_img.getAttribute('data-src');
-                            }
-                        };
-                    })('lazy-{{ mural.id }}')
+                    content: content_string_{{ loop.index }}
                 });
+
+                google.maps.event.addListener(info_window_{{ loop.index }}, "domready", function(img_id){
+                    return function () {
+                        var lazy_img = document.getElementById(img_id);
+                        if (lazy_img) {
+                            lazy_img.src = lazy_img.getAttribute('data-src');
+                        }
+                    };
+                }('lazy-{{ mural.id }}'));
 
                 const marker_{{ loop.index }} = new google.maps.Marker({
                     position: { lat: {{ mural.geo_position.latitude }}, lng: {{ mural.geo_position.longitude }} },
