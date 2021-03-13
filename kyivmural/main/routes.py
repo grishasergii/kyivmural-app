@@ -1,19 +1,20 @@
-from flask import render_template, current_app, g
+from flask import render_template, request
 
 from kyivmural.main import bp
-from kyivmural.queries.queries import get_mural, get_murals
+from kyivmural.queries.queries import get_mural, get_all_murals, get_murals
 
 
 @bp.route("/index")
 def index():
-    murals = get_murals()
+    murals = get_all_murals()
     return render_template("index.html", title="KYIVMURAL", murals=murals)
 
 
 @bp.route("/murals")
 def murals():
-    murals = get_murals()
-    return render_template("mural/all.html", murals=murals)
+    next_token = request.args.get("next_token")
+    murals, next_token = get_murals(9, next_token)
+    return render_template("mural/all.html", murals=murals, next_token=next_token)
 
 
 @bp.route("/mural/<uuid:mural_id>/<artist_name_en>")

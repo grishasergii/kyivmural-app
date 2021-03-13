@@ -7,8 +7,22 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 
-def get_murals():
-    return _get_from_kyivmural_api("murals")
+def get_all_murals():
+    result = []
+    next_token = None
+    while True:
+        murals, next_token = get_murals(200, next_token=next_token)
+        result += murals
+        if not next_token:
+            return result
+
+
+def get_murals(limit, next_token=None):
+    params = {"limit": limit}
+    if next_token:
+        params["next_token"] = next_token
+    response = _get_from_kyivmural_api("murals", params)
+    return response["items"], response.get("next_token")
 
 
 def get_mural(mural_id, artist_name):
@@ -40,7 +54,7 @@ def _requests_retry_session(
     return session
 
 
-def _get_from_kyivmural_api(resource):
+def _get_from_kyivmural_api(resource, params=None):
     region = current_app.config["AWS_REGION"]
     api_url = f"{current_app.config['KYIVMURAL_API_ENDPOINT']}/{resource}"
     api_host = urlparse(api_url).netloc
@@ -51,7 +65,7 @@ def _get_from_kyivmural_api(resource):
 
     requests_session = _requests_retry_session()
 
-    response = requests_session.get(api_url, auth=auth)
+    response = requests_session.get(api_url, auth=auth, params=params)
     response.raise_for_status()
     if response.text:
         return response.json()

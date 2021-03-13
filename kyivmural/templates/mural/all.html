@@ -9,4 +9,7 @@
         </p>
     </div>
     {% endfor %}
+    {% if next_token %}
+        <a href="{{ url_for('main.murals', next_token=next_token) }}">See more...</a>
+    {% endif %}
 {% endblock %}
