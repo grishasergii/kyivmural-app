@@ -1,19 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+    <h1>{{ artist.artist_name_en }}{{ ' aka ' + artist.nickname if artist.nickname else '' }}</h1>
     <h2>Murals:</h2>
     {% for mural in murals %}
     <div>
         <p>
             Mural {{ mural.id }} located at {{ mural.geo_position.latitude }}, {{ mural.geo_position.longitude }}
-            {% if mural.artist_name_en == 'unknown' %}
-            {% else %}
-            by <a href="{{ url_for('main.artist', artist_name_en=mural.artist_name_en) }}">{{ mural.artist_name_en }}</a>
-            {% endif %}
             <a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">more</a>
         </p>
     </div>
     {% endfor %}
-    {% if next_token %}
-        <a href="{{ url_for('main.murals', next_token=next_token) }}">See more...</a>
-    {% endif %}
 {% endblock %}

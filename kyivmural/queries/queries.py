@@ -33,8 +33,12 @@ def get_artists():
     return _get_from_kyivmural_api("artists")
 
 
-def get_artist(artist_id):
-    return _get_from_kyivmural_api(f"artists/{artist_id}")
+def get_artist(artist_name_en):
+    return _get_from_kyivmural_api(f"artists/{artist_name_en}")
+
+
+def get_murals_by_artist(artist_name_en):
+    return _get_from_kyivmural_api(f"artists/{artist_name_en}/murals")
 
 
 def _requests_retry_session(
