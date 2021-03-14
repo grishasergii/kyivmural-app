@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  pyhon-linter:
+  python-linter:
     name: Python Lint
     runs-on: ubuntu-latest
     env:
@@ -43,9 +43,9 @@ jobs:
 
   provision-pr-stack:
     name: Provision PR stack
-    needs:
-      - yaml-linter
-      - pyhon-linter
+    # needs:
+    #   - yaml-linter
+    #   - python-linter
     runs-on: ubuntu-latest
     env:
       BRANCH: pr-${{ github.event.number }}
@@ -64,7 +64,7 @@ jobs:
           node-version: 14
       - run: npm ci
       - name: Provision PR stack
-        uses: serverless/github-action@master
+        uses: dhollerbach/github-action-serverless-with-python-requirements@master
         with:
           args: deploy --stage $BRANCH
         env:
