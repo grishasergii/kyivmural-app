@@ -20,9 +20,9 @@ def create_app(config_class=Config):
 
     babel.init_app(app)
     app.jinja_env.globals.update(get_locale=get_locale)  # pylint: disable=no-member
-    app.jinja_env.globals.update(
+    app.jinja_env.globals.update(  # pylint: disable=no-member
         GOOGLE_MAPS_API_KEY=os.environ["GOOGLE_MAPS_API_KEY"]
-    )  # pylint: disable=no-member
+    )
 
     @app.route("/")
     def index():  # pylint: disable=unused-variable
@@ -33,9 +33,9 @@ def create_app(config_class=Config):
             )
         )
 
-    from kyivmural.errors import (
+    from kyivmural.errors import (  # pylint: disable=import-outside-toplevel
         bp as errors_bp,
-    )  # pylint: disable=import-outside-toplevel
+    )
     from kyivmural.main import bp as main_bp  # pylint: disable=import-outside-toplevel
 
     @main_bp.url_defaults
