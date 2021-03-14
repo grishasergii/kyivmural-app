@@ -1,0 +1,29 @@
+name: Version & Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  CheckVersion:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Read version
+      id: read_version
+      run: |
+        version=`cat VERSION`
+        echo "version: $value"
+        echo "##[set-output name=version;]v$version"
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.read_version.outputs.version }}
+        release_name: ${{ steps.read_version.outputs.version }}
+        body: Version ${{ steps.read_version.outputs.version }}
+        draft: false
+        prerelease: false

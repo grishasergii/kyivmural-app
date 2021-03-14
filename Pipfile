@@ -15,6 +15,9 @@ black = "*"
 pytest = "*"
 bump2version = "*"
 isort = "*"
+flake8 = "*"
+pycodestyle = "*"
+mypy = "*"
 
 [requires]
 python_version = "3.8"

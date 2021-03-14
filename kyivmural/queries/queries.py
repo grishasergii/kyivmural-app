@@ -1,3 +1,4 @@
+"""Queries to Kyivmural API"""
 from urllib.parse import urlparse
 
 import requests
@@ -8,6 +9,7 @@ from urllib3.util.retry import Retry
 
 
 def get_all_murals():
+    """Returns all murals"""
     result = []
     next_token = None
     while True:
@@ -18,6 +20,7 @@ def get_all_murals():
 
 
 def get_murals(limit, next_token=None):
+    """Returns a number of murals according to the provided limit"""
     params = {"limit": limit}
     if next_token:
         params["next_token"] = next_token
@@ -26,24 +29,29 @@ def get_murals(limit, next_token=None):
 
 
 def get_mural(mural_id, artist_name):
+    """Returns a mural"""
     return _get_from_kyivmural_api(f"murals/{mural_id}/{artist_name}")
 
 
 def get_artists():
+    """Returns all artists"""
     return _get_from_kyivmural_api("artists")
 
 
 def get_artist(artist_name_en):
+    """Returns an artist"""
     return _get_from_kyivmural_api(f"artists/{artist_name_en}")
 
 
 def get_murals_by_artist(artist_name_en):
+    """Returns all murals by an artist"""
     return _get_from_kyivmural_api(f"artists/{artist_name_en}/murals")
 
 
 def _requests_retry_session(
     retries=5, backoff_factor=2, status_forcelist=(500, 502, 503, 504), session=None
 ):
+    """Returns a retriable session"""
     session = session or requests.Session()
     retry = Retry(
         total=retries,
@@ -59,6 +67,7 @@ def _requests_retry_session(
 
 
 def _get_from_kyivmural_api(resource, params=None):
+    """Calls kyivmural api"""
     region = current_app.config["AWS_REGION"]
     api_url = f"{current_app.config['KYIVMURAL_API_ENDPOINT']}/{resource}"
     api_host = urlparse(api_url).netloc

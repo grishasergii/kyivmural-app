@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  pyhon-linter:
+  python-linter:
     name: Python Lint
     runs-on: ubuntu-latest
     env:
@@ -31,8 +31,6 @@ jobs:
         run: pipenv run isort $SOURCE_FOLDER --profile black --check-only
       - name: Black
         run: pipenv run black $SOURCE_FOLDER --check
-      - name: Mypy
-        run: pipenv run mypy $SOURCE_FOLDER
 
   yaml-linter:
     name: Lint YAML
@@ -47,7 +45,7 @@ jobs:
     name: Provision PR stack
     needs:
       - yaml-linter
-      - pyhon-linter
+      - python-linter
     runs-on: ubuntu-latest
     env:
       BRANCH: pr-${{ github.event.number }}
@@ -61,14 +59,16 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
+      - name: Install pipenv
+        run: python -m pip install --upgrade pip wheel pipenv
       - uses: actions/setup-node@v2
         with:
           node-version: 14
       - run: npm ci
       - name: Provision PR stack
-        uses: serverless/github-action@master
+        uses: dhollerbach/github-action-serverless-with-python-requirements@master
         with:
-          args: deploy --stage $BRANCH
+          args: --stage $BRANCH
         env:
           KYIVMURAL_API_ENDPOINT: ${{ secrets.KYIVMURAL_API_ENDPOINT }}
           KYIVMURAL_API_ID: ${{ secrets.KYIVMURAL_API_ID }}
