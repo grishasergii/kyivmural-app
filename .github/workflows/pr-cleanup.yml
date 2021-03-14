@@ -7,8 +7,6 @@ jobs:
   delete-pr-stack:
     name: Delete PR stack
     runs-on: ubuntu-latest
-    env:
-      BRANCH: pr-${{ github.event.number }}
     steps:
       - uses: actions/checkout@v2
       - uses: aws-actions/configure-aws-credentials@v1
@@ -23,7 +21,8 @@ jobs:
       - name: Remove PR stack
         uses: serverless/github-action@master
         with:
-          args: remove --stage $BRANCH
+          args: -c "remove --stage pr-${{ github.event.number }}"
+          entrypoint: /bin/bash
         env:
           KYIVMURAL_API_ENDPOINT: ${{ secrets.KYIVMURAL_API_ENDPOINT }}
           KYIVMURAL_API_ID: ${{ secrets.KYIVMURAL_API_ID }}
