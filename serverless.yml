@@ -11,7 +11,7 @@ provider:
   region: eu-central-1
   stackTags:
     Name: Kyivmural-App
-    Version: 0.1.1
+    Version: 0.1.2
     Application: Kyivmural
     Component: App
   iam:
