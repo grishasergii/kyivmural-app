@@ -1,3 +1,4 @@
+"""Error routes"""
 from flask import Blueprint
 
 bp = Blueprint("errors", __name__, url_prefix="/<lang_code>")

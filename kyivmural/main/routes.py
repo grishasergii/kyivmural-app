@@ -1,3 +1,4 @@
+"""Describes main routes"""
 from flask import render_template, request
 
 from kyivmural.main import bp
@@ -13,31 +14,36 @@ from kyivmural.queries.queries import (
 
 @bp.route("/index")
 def index():
-    murals = get_all_murals()
-    return render_template("index.html", title="KYIVMURAL", murals=murals)
+    """Landing page"""
+    _murals = get_all_murals()
+    return render_template("index.html", title="KYIVMURAL", murals=_murals)
 
 
 @bp.route("/murals")
 def murals():
+    """Murals page"""
     next_token = request.args.get("next_token")
-    murals, next_token = get_murals(9, next_token)
-    return render_template("mural/all.html", murals=murals, next_token=next_token)
+    _murals, next_token = get_murals(9, next_token)
+    return render_template("mural/all.html", murals=_murals, next_token=next_token)
 
 
 @bp.route("/mural/<uuid:mural_id>/<artist_name_en>")
 def mural(mural_id, artist_name_en):
-    mural = get_mural(mural_id, artist_name_en)
-    return render_template("mural/detail_view.html", mural=mural)
+    """Mural page"""
+    _mural = get_mural(mural_id, artist_name_en)
+    return render_template("mural/detail_view.html", mural=_mural)
 
 
 @bp.route("/artists")
 def artists():
-    artists = get_artists()
-    return render_template("artist/all.html", artists=artists)
+    """Artists page"""
+    _artists = get_artists()
+    return render_template("artist/all.html", artists=_artists)
 
 
 @bp.route("/artists/<artist_name_en>")
 def artist(artist_name_en):
-    artist = get_artist(artist_name_en)
-    murals = get_murals_by_artist(artist_name_en)
-    return render_template("artist/detail_view.html", artist=artist, murals=murals)
+    """Artist page"""
+    _artist = get_artist(artist_name_en)
+    _murals = get_murals_by_artist(artist_name_en)
+    return render_template("artist/detail_view.html", artist=_artist, murals=_murals)

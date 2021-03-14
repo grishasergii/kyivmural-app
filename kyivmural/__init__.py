@@ -1,3 +1,4 @@
+"""create and configure flask app"""
 import os
 
 from flask import Flask, current_app, g, redirect, url_for
@@ -9,6 +10,7 @@ babel = Babel()
 
 
 def create_app(config_class=Config):
+    """Create an instance of an app"""
     app = Flask(__name__)
 
     app.config.from_object(config_class)
@@ -17,11 +19,13 @@ def create_app(config_class=Config):
     app.config["DEFAULT_LANG_CODE"] = os.environ["DEFAULT_LANG_CODE"]
 
     babel.init_app(app)
-    app.jinja_env.globals.update(get_locale=get_locale)
-    app.jinja_env.globals.update(GOOGLE_MAPS_API_KEY=os.environ["GOOGLE_MAPS_API_KEY"])
+    app.jinja_env.globals.update(get_locale=get_locale)  # pylint: disable=no-member
+    app.jinja_env.globals.update(
+        GOOGLE_MAPS_API_KEY=os.environ["GOOGLE_MAPS_API_KEY"]
+    )  # pylint: disable=no-member
 
     @app.route("/")
-    def index():
+    def index():  # pylint: disable=unused-variable
         return redirect(
             url_for(
                 "main.index",
@@ -29,17 +33,19 @@ def create_app(config_class=Config):
             )
         )
 
-    from kyivmural.errors import bp as errors_bp
-    from kyivmural.main import bp as main_bp
+    from kyivmural.errors import (
+        bp as errors_bp,
+    )  # pylint: disable=import-outside-toplevel
+    from kyivmural.main import bp as main_bp  # pylint: disable=import-outside-toplevel
 
     @main_bp.url_defaults
     @errors_bp.url_defaults
-    def add_language_code(endpoint, values):
+    def add_language_code(_, values):  # pylint: disable=unused-variable
         values.setdefault("lang_code", get_locale())
 
     @main_bp.url_value_preprocessor
     @errors_bp.url_value_preprocessor
-    def pull_lang_code(endpoint, values):
+    def pull_lang_code(_, values):  # pylint: disable=unused-variable
         lang_code = values.pop("lang_code", current_app.config["DEFAULT_LANG_CODE"])
         if lang_code not in current_app.config["LANGUAGES"]:
             lang_code = current_app.config["DEFAULT_LANG_CODE"]
@@ -53,4 +59,5 @@ def create_app(config_class=Config):
 
 @babel.localeselector
 def get_locale():
+    """Returns app language code"""
     return g.get("lang_code", current_app.config["LANGUAGES"])
