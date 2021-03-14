@@ -15,7 +15,7 @@ jobs:
       id: read_version
       run: |
         version=`cat VERSION`
-        echo "version: $value"
+        echo "version: $version"
         echo "##[set-output name=version;]v$version"
     - name: Create Release
       uses: actions/create-release@v1
