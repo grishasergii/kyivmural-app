@@ -56,4 +56,6 @@ package:
     - Pipfile.lock
     - readme.md
     - package-lock.json
+    - package.json
+    - tox.ini
     - VERSION
