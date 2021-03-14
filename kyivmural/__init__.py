@@ -1,7 +1,8 @@
 import os
 
-from flask import Flask, g, redirect, url_for, current_app
+from flask import Flask, current_app, g, redirect, url_for
 from flask_babel import Babel
+
 from config import Config
 
 babel = Babel()
@@ -21,10 +22,15 @@ def create_app(config_class=Config):
 
     @app.route("/")
     def index():
-        return redirect(url_for("main.index", lang_code=g.get("lang_code", current_app.config["DEFAULT_LANG_CODE"])))
+        return redirect(
+            url_for(
+                "main.index",
+                lang_code=g.get("lang_code", current_app.config["DEFAULT_LANG_CODE"]),
+            )
+        )
 
-    from kyivmural.main import bp as main_bp
     from kyivmural.errors import bp as errors_bp
+    from kyivmural.main import bp as main_bp
 
     @main_bp.url_defaults
     @errors_bp.url_defaults

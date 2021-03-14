@@ -1,7 +1,14 @@
 from flask import render_template, request
 
 from kyivmural.main import bp
-from kyivmural.queries.queries import get_mural, get_all_murals, get_murals, get_artist, get_artists, get_murals_by_artist
+from kyivmural.queries.queries import (
+    get_all_murals,
+    get_artist,
+    get_artists,
+    get_mural,
+    get_murals,
+    get_murals_by_artist,
+)
 
 
 @bp.route("/index")
