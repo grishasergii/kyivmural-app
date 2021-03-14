@@ -47,3 +47,8 @@ def artist(artist_name_en):
     _artist = get_artist(artist_name_en)
     _murals = get_murals_by_artist(artist_name_en)
     return render_template("artist/detail_view.html", artist=_artist, murals=_murals)
+
+
+@bp.route("/about")
+def about():
+    return render_template("about.html")
