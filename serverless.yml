@@ -1,15 +1,27 @@
 ---
 service: kyivmural
 
+variablesResolutionMode: 20210219
+useDotenv: true
+
 provider:
   name: aws
   runtime: python3.8
+  stage: test
+  region: eu-central-1
+  stackTags:
+    Name: Kyivmural-App
+    Version: 0.0.1
+    Application: Kyivmural
+    Component: App
 
 functions:
   app:
     handler: wsgi_handler.handler
     environment:
-      KYIVMURAL_API_ENDPOINT: dummy
+      KYIVMURAL_API_ENDPOINT: ${env:KYIVMURAL_API_ENDPOINT}
+      DEFAULT_LANG_CODE: ${env:DEFAULT_LANG_CODE}
+      GOOGLE_MAPS_API_KEY: ${env:GOOGLE_MAPS_API_KEY}
     events:
       - http: ANY /
       - http: "ANY {proxy+}"
