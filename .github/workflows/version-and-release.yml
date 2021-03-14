@@ -11,6 +11,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+      with:
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     - name: Read version
       id: read_version
       run: |
@@ -27,7 +29,7 @@ jobs:
       if: ${{ steps.check_tag.outputs.exists == 'false' }}
       uses: softprops/action-gh-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       with:
         tag_name: ${{ steps.read_version.outputs.version }}
         name: ${{ steps.read_version.outputs.version }}
