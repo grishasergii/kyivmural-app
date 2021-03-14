@@ -33,8 +33,8 @@ def create_app(config_class=Config):
             )
         )
 
-    from kyivmural.errors import (  # pylint: disable=import-outside-toplevel
-        bp as errors_bp,
+    from kyivmural.errors import (
+        bp as errors_bp,  # pylint: disable=import-outside-toplevel
     )
     from kyivmural.main import bp as main_bp  # pylint: disable=import-outside-toplevel
 
