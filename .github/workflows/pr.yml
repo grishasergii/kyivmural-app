@@ -31,8 +31,6 @@ jobs:
         run: pipenv run isort $SOURCE_FOLDER --profile black --check-only
       - name: Black
         run: pipenv run black $SOURCE_FOLDER --check
-      - name: Mypy
-        run: pipenv run mypy $SOURCE_FOLDER
 
   yaml-linter:
     name: Lint YAML
