@@ -62,7 +62,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
-      - run: npm ci
+      - run: npm install
       - name: Provision PR stack
         uses: serverless/github-action@master
         with:
