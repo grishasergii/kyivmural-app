@@ -24,9 +24,9 @@
                 </ul>
                 <span class="navbar-text">
                     {% if get_locale()=='uk' %}
-                        <a href="{{ request.path|replace('/'+get_locale()+'/', '/en/') }}">in English</a>
+                        <a href="{{ request.url|replace('/'+get_locale()+'/', '/en/') }}">in English</a>
                     {%  else %}
-                        <a href="{{ request.path|replace('/'+get_locale()+'/', '/uk/') }}">українською</a>
+                        <a href="{{ request.url|replace('/'+get_locale()+'/', '/uk/') }}">українською</a>
                     {%  endif %}
                 </span>
             </div>
