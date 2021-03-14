@@ -21,7 +21,7 @@ jobs:
       - name: Remove PR stack
         uses: serverless/github-action@master
         with:
-          args: -c "remove --stage pr-${{ github.event.number }}"
+          args: -c "serverless remove --stage pr-${{ github.event.number }}"
           entrypoint: /bin/bash
         env:
           KYIVMURAL_API_ENDPOINT: ${{ secrets.KYIVMURAL_API_ENDPOINT }}
