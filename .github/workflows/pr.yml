@@ -3,9 +3,6 @@ on:
   pull_request:
     branches:
       - master
-    paths-ignore:
-      - .github/**
-      - readme.md
 
 jobs:
   python-linter:
