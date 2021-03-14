@@ -40,10 +40,23 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Kyivmural home page</h1>
     <div class="container-fluid container-map">
         <div class="row">
             <div id="map" style="width: 100%; height: 500px"></div>
+        </div>
+    </div>
+    <div class="container">
+        Explore some murals
+        <div class="row row-cols-1 row-cols-sm-4">
+            {% for mural in random_murals %}
+            <div class="col mb-4">
+                <div class="card">
+                    <a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">
+                        <img src="{{ mural.thumbnail }}" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 

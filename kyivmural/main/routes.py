@@ -10,13 +10,15 @@ from kyivmural.queries.queries import (
     get_murals,
     get_murals_by_artist,
 )
+import random
 
 
 @bp.route("/index")
 def index():
     """Landing page"""
     _murals = get_all_murals()
-    return render_template("index.html", title="KYIVMURAL", murals=_murals)
+    random_murals = random.choices(_murals, k=4)
+    return render_template("index.html", title="KYIVMURAL", murals=_murals, random_murals=random_murals)
 
 
 @bp.route("/murals")
