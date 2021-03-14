@@ -1,5 +1,5 @@
 ---
-service: kyivmural
+service: kyivmural-app
 
 variablesResolutionMode: 20210219
 useDotenv: true
@@ -14,9 +14,19 @@ provider:
     Version: 0.0.1
     Application: Kyivmural
     Component: App
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: execute-api:Invoke
+          Resource:
+          - !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${env:KYIVMURAL_API_ID}/${env:KYIVMURAL_API_STAGE}/GET/*"
+  apiGateway:
+    shouldStartNameWithService: true
+  lambdaHashingVersion: 20201221
 
 functions:
-  app:
+  kyivmural-app:
     handler: wsgi_handler.handler
     environment:
       KYIVMURAL_API_ENDPOINT: ${env:KYIVMURAL_API_ENDPOINT}
