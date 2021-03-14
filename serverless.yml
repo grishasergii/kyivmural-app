@@ -34,3 +34,4 @@ package:
     - Pipfile.lock
     - readme.md
     - package-lock.json
+    - VERSION
