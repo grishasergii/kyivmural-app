@@ -43,9 +43,9 @@ jobs:
 
   provision-pr-stack:
     name: Provision PR stack
-    # needs:
-    #   - yaml-linter
-    #   - python-linter
+    needs:
+      - yaml-linter
+      - python-linter
     runs-on: ubuntu-latest
     env:
       BRANCH: pr-${{ github.event.number }}
