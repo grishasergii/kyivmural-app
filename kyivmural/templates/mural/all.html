@@ -1,19 +1,27 @@
 {% extends "base.html" %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/card-thumbnail.css')}}">
+{% endblock %}
+
 {% block content %}
-    <h2>Murals:</h2>
-    {% for mural in murals %}
-    <div>
-        <p>
-            Mural {{ mural.id }} located at {{ mural.geo_position.latitude }}, {{ mural.geo_position.longitude }}
-            {% if mural.artist_name_en == 'unknown' %}
-            {% else %}
-            by <a href="{{ url_for('main.artist', artist_name_en=mural.artist_name_en) }}">{{ mural.artist_name_en }}</a>
-            {% endif %}
-            <a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">more</a>
-        </p>
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        {% for mural in murals %}
+            <div class="col mb-4">
+                <div class="card">
+                    <a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">
+                        <img src="{{ mural.thumbnail }}" class="card-img-top card-thumbnail">
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        {% if next_token %}
+        <div class="row justify-content-center">
+            <a class="btn btn-outline-primary btn-lg" href="{{ url_for('main.murals', next_token=next_token) }}">See more...</a>
+        </div>
+        {% endif %}
     </div>
-    {% endfor %}
-    {% if next_token %}
-        <a href="{{ url_for('main.murals', next_token=next_token) }}">See more...</a>
-    {% endif %}
 {% endblock %}
