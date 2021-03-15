@@ -17,7 +17,8 @@
 
             {% for mural in murals %}
                 const content_string_{{ loop.index }} =
-                    '<p><img src="{{ url_for('static', filename='img/1x1.jpg') }}" class="img-info-window" id="lazy-{{ mural.id }}" data-src="{{ mural.thumbnail }}"></p>';
+                    '<p><a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">more...</a></p>' +
+                    '<p><img src="{{ url_for('static', filename='img/1x1.jpg') }}" style="max-height: 320px;" id="lazy-{{ mural.id }}" data-src="{{ mural.thumbnail }}"></p>';
 
                 const info_window_{{ loop.index }} = new google.maps.InfoWindow({
                     content: content_string_{{ loop.index }}
