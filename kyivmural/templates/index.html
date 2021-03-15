@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css')}}">
+{% endblock %}
+
 {% block scripts %}
     {{ super() }}
     <script>
@@ -47,12 +52,12 @@
     </div>
     <div class="container">
         Explore some murals
-        <div class="row row-cols-1 row-cols-sm-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
             {% for mural in random_murals %}
             <div class="col mb-4">
                 <div class="card">
                     <a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">
-                        <img src="{{ mural.thumbnail }}" class="card-img-top">
+                        <img src="{{ mural.thumbnail }}" class="card-img-top card-thumbnail">
                     </a>
                 </div>
             </div>
