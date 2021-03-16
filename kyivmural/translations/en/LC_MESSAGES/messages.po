@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-16 19:18+0100\n"
+"POT-Creation-Date: 2021-03-16 21:41+0100\n"
 "PO-Revision-Date: 2021-03-16 19:51+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
 
-#: kyivmural/templates/about.html:5 kyivmural/templates/base.html:11
-#: kyivmural/templates/base.html:18
+#: kyivmural/templates/about.html:5 kyivmural/templates/base.html:14
+#: kyivmural/templates/base.html:31
 msgid "Kyivmural"
 msgstr ""
 
@@ -46,23 +46,27 @@ msgstr ""
 "An active link to www.kyivmural.com is mandatory when using any "
 "information from this website"
 
-#: kyivmural/templates/base.html:25 kyivmural/templates/mural/all.html:11
+#: kyivmural/templates/base.html:38 kyivmural/templates/mural/all.html:11
 msgid "Murals"
 msgstr ""
 
-#: kyivmural/templates/artist/all.html:5 kyivmural/templates/base.html:28
+#: kyivmural/templates/artist/all.html:5 kyivmural/templates/base.html:41
 msgid "Artists"
 msgstr ""
 
-#: kyivmural/templates/base.html:31
+#: kyivmural/templates/base.html:44
 msgid "About"
 msgstr ""
 
-#: kyivmural/templates/index.html:55
-msgid "The Murals of Kyiv"
+#: kyivmural/templates/index.html:20
+msgid "more"
 msgstr ""
 
 #: kyivmural/templates/index.html:57
+msgid "The Murals of Kyiv"
+msgstr ""
+
+#: kyivmural/templates/index.html:59
 msgid "introduction_paragraph"
 msgstr ""
 "Explore street art in Kyiv. Starting from 2014 large murals have been "
@@ -71,49 +75,49 @@ msgstr ""
 "international and local artists and they put Kyiv on the international "
 "street art map"
 
-#: kyivmural/templates/index.html:57
+#: kyivmural/templates/index.html:59
 msgid "Kyivmural presents"
 msgstr ""
 
-#: kyivmural/templates/index.html:57
+#: kyivmural/templates/index.html:59
 msgid "artworks"
 msgstr ""
 
-#: kyivmural/templates/index.html:57
+#: kyivmural/templates/index.html:59
 msgid "and"
 msgstr ""
 
-#: kyivmural/templates/index.html:57
+#: kyivmural/templates/index.html:59
 msgid "artists"
 msgstr ""
 
-#: kyivmural/templates/index.html:60
+#: kyivmural/templates/index.html:62
 msgid "Discover"
 msgstr ""
 
-#: kyivmural/templates/index.html:62
+#: kyivmural/templates/index.html:64
 msgid ""
 "Discover four randomly selected artworks. Refresh the page to get new "
 "suggestions"
 msgstr ""
 
-#: kyivmural/templates/errors/404.html:4
+#: kyivmural/templates/errors/404.html:7
 msgid "Not Found"
 msgstr ""
 
-#: kyivmural/templates/errors/404.html:5
+#: kyivmural/templates/errors/404.html:9
 msgid "What you are looking for is not there"
 msgstr ""
 
-#: kyivmural/templates/errors/404.html:6 kyivmural/templates/errors/500.html:6
+#: kyivmural/templates/errors/404.html:10 kyivmural/templates/errors/500.html:9
 msgid "Back"
 msgstr ""
 
-#: kyivmural/templates/errors/500.html:4
+#: kyivmural/templates/errors/500.html:6
 msgid "An unexpected error has occurred"
 msgstr ""
 
-#: kyivmural/templates/errors/500.html:5
+#: kyivmural/templates/errors/500.html:7
 msgid "The administrator has been notified. Sorry for the inconvenience!"
 msgstr ""
 
@@ -121,16 +125,16 @@ msgstr ""
 msgid "See more"
 msgstr ""
 
-#: kyivmural/templates/mural/detail_view.html:29
-#: kyivmural/templates/mural/detail_view.html:34
+#: kyivmural/templates/mural/detail_view.html:49
+#: kyivmural/templates/mural/detail_view.html:54
 msgid "Photo by"
 msgstr ""
 
-#: kyivmural/templates/mural/detail_view.html:42
+#: kyivmural/templates/mural/detail_view.html:64
 msgid "Location"
 msgstr ""
 
-#: kyivmural/templates/mural/detail_view.html:62
+#: kyivmural/templates/mural/detail_view.html:84
 msgid "Artist"
 msgstr ""
 

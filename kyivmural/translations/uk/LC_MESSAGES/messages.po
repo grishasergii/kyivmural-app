@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-16 19:18+0100\n"
+"POT-Creation-Date: 2021-03-16 21:41+0100\n"
 "PO-Revision-Date: 2021-03-16 19:51+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
 
-#: kyivmural/templates/about.html:5 kyivmural/templates/base.html:11
-#: kyivmural/templates/base.html:18
+#: kyivmural/templates/about.html:5 kyivmural/templates/base.html:14
+#: kyivmural/templates/base.html:31
 msgid "Kyivmural"
 msgstr "Київмурал"
 
@@ -47,23 +47,28 @@ msgstr ""
 "При використанні матеріалів з цього сайту посилання на www.kyivmural.com "
 "обов'язкове"
 
-#: kyivmural/templates/base.html:25 kyivmural/templates/mural/all.html:11
+#: kyivmural/templates/base.html:38 kyivmural/templates/mural/all.html:11
 msgid "Murals"
 msgstr "Мурали"
 
-#: kyivmural/templates/artist/all.html:5 kyivmural/templates/base.html:28
+#: kyivmural/templates/artist/all.html:5 kyivmural/templates/base.html:41
 msgid "Artists"
 msgstr "Художники"
 
-#: kyivmural/templates/base.html:31
+#: kyivmural/templates/base.html:44
 msgid "About"
 msgstr "Про проєкт"
 
-#: kyivmural/templates/index.html:55
+#: kyivmural/templates/index.html:20
+#, fuzzy
+msgid "more"
+msgstr "Більше"
+
+#: kyivmural/templates/index.html:57
 msgid "The Murals of Kyiv"
 msgstr "Мурали Києва"
 
-#: kyivmural/templates/index.html:57
+#: kyivmural/templates/index.html:59
 msgid "introduction_paragraph"
 msgstr ""
 "Спостерігайте за тим, як у Києві з’являються нові мурали. Починаючи з "
@@ -72,66 +77,68 @@ msgstr ""
 "будинків та цей тренд продовжується. Мурали вже стали справжньою "
 "прикрасою Києва та мають всі шанси стати його новою візитною карткою"
 
-#: kyivmural/templates/index.html:57
+#: kyivmural/templates/index.html:59
 msgid "Kyivmural presents"
 msgstr "Наразі Київмурал налічує"
 
-#: kyivmural/templates/index.html:57
+#: kyivmural/templates/index.html:59
 msgid "artworks"
 msgstr "стінописа"
 
-#: kyivmural/templates/index.html:57
+#: kyivmural/templates/index.html:59
 msgid "and"
 msgstr "та"
 
-#: kyivmural/templates/index.html:57
+#: kyivmural/templates/index.html:59
 msgid "artists"
 msgstr "художника"
 
-#: kyivmural/templates/index.html:60
+#: kyivmural/templates/index.html:62
 msgid "Discover"
 msgstr "Досліджуй"
 
-#: kyivmural/templates/index.html:62
+#: kyivmural/templates/index.html:64
 msgid ""
 "Discover four randomly selected artworks. Refresh the page to get new "
 "suggestions"
 msgstr "До вашої уваги чотири випадково вибраних мурали"
 
-#: kyivmural/templates/errors/404.html:4
+#: kyivmural/templates/errors/404.html:7
 msgid "Not Found"
 msgstr "Не знайдено"
 
-#: kyivmural/templates/errors/404.html:5
+#: kyivmural/templates/errors/404.html:9
 msgid "What you are looking for is not there"
 msgstr "Те, що ви шукаєте, найімовірніше, не тут"
 
-#: kyivmural/templates/errors/404.html:6 kyivmural/templates/errors/500.html:6
+#: kyivmural/templates/errors/404.html:10 kyivmural/templates/errors/500.html:9
 msgid "Back"
 msgstr "Назад"
 
-#: kyivmural/templates/errors/500.html:4
+#: kyivmural/templates/errors/500.html:6
 msgid "An unexpected error has occurred"
 msgstr "Сталася непередбачувана халепа"
 
-#: kyivmural/templates/errors/500.html:5
+#: kyivmural/templates/errors/500.html:7
 msgid "The administrator has been notified. Sorry for the inconvenience!"
-msgstr "Адміністратор вже працює над вирішенням проблеми. Вибачте за тимчасові незручності"
+msgstr ""
+"Адміністратор вже працює над вирішенням проблеми. Вибачте за тимчасові "
+"незручності"
 
 #: kyivmural/templates/mural/all.html:26
 msgid "See more"
 msgstr "Більше"
 
-#: kyivmural/templates/mural/detail_view.html:29
-#: kyivmural/templates/mural/detail_view.html:34
+#: kyivmural/templates/mural/detail_view.html:49
+#: kyivmural/templates/mural/detail_view.html:54
 msgid "Photo by"
 msgstr "Фото"
 
-#: kyivmural/templates/mural/detail_view.html:42
+#: kyivmural/templates/mural/detail_view.html:64
 msgid "Location"
 msgstr "Місцезнаходження"
 
-#: kyivmural/templates/mural/detail_view.html:62
+#: kyivmural/templates/mural/detail_view.html:84
 msgid "Artist"
 msgstr "Художник"
 
