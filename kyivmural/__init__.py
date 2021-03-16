@@ -62,7 +62,7 @@ def create_app(config_class=Config):
     app.register_blueprint(errors_bp)
 
     @app.context_processor
-    def inject_now():
+    def inject_now():  # pylint: disable=unused-variable
         return {"now": datetime.utcnow()}
 
     return app

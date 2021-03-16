@@ -20,11 +20,11 @@ def index():
     _murals = get_all_murals()
     random_murals = random.choices(_murals, k=4)
     murals_count = len(_murals)
-    artists = set()
-    for mural in _murals:
-        artists.add(mural["artist_name_en"])
-    artists.discard("unknown")
-    artists_count = len(artists)
+    _artists = set()
+    for _mural in _murals:
+        _artists.add(_mural["artist_name_en"])
+    _artists.discard("unknown")
+    artists_count = len(_artists)
     return render_template(
         "index.html",
         title="KYIVMURAL",
@@ -67,4 +67,5 @@ def artist(artist_name_en):
 
 @bp.route("/about")
 def about():
+    """About page"""
     return render_template("about.html")
