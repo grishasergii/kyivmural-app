@@ -5,7 +5,7 @@
     <meta property="og:url" content="{{ request.url }}" />
     <meta property="og:type" content="place" />
     <meta property="og:title" content="Mural" />
-    {% if {{ mural.description.get(get_locale()).description }} %}
+    {% if mural.description.get(get_locale()).description %}
         <meta property="og:description" content="{{ mural.description.get(get_locale()).description }}" />
     {% endif %}
     <meta property="og:image" content="{{ mural.thumbnail }}" />
