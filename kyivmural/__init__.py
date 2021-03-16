@@ -24,6 +24,9 @@ def create_app(config_class=Config):
     app.jinja_env.globals.update(  # pylint: disable=no-member
         GOOGLE_MAPS_API_KEY=os.environ["GOOGLE_MAPS_API_KEY"]
     )
+    app.jinja_env.globals.update(  # pylint: disable=no-member
+        GOOGLE_ANALYTICS_ID=os.environ["GOOGLE_ANALYTICS_ID"]
+    )
 
     @app.route("/")
     def index():  # pylint: disable=unused-variable
