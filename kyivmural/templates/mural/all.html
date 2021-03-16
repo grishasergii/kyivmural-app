@@ -7,6 +7,9 @@
 
 {% block content %}
     <div class="container mt-4">
+        <h1>
+            {{ _("Murals") }}
+        </h1>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
         {% for mural in murals %}
             <div class="col mb-4">
@@ -20,7 +23,7 @@
         </div>
         {% if next_token %}
         <div class="row justify-content-center">
-            <a class="btn btn-outline-primary btn-lg" href="{{ url_for('main.murals', next_token=next_token) }}">See more...</a>
+            <a class="btn btn-outline-primary btn-lg" href="{{ url_for('main.murals', next_token=next_token) }}">{{ _("See more") }}...</a>
         </div>
         {% endif %}
     </div>

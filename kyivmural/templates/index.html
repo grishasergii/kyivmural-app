@@ -52,7 +52,15 @@
         </div>
     </div>
     <div class="container mt-4">
-        Explore some murals
+        <h2>{{ _("The Murals of Kyiv") }}</h2>
+        <p class="lead">
+            {{ _("introduction_paragraph") }}. {{ _("Kyivmural presents") }} {{ murals_count }} {{ _("artworks") }} {{ _("and") }} {{ artists_count }} {{ _("artists") }}.
+        </p>
+
+        <h2>{{ _("Discover") }}</h2>
+        <p class="lead">
+            {{ _("Discover four randomly selected artworks. Refresh the page to get new suggestions") }}.
+        </p>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mt-4">
             {% for mural in random_murals %}
             <div class="col mb-4">

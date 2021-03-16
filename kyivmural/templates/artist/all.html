@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container mt-4">
-        <h2>Artists</h2>
+        <h2>
+            {{ _("Artists") }}
+        </h2>
         <p>
-        <ul class="list-group">
-            {% for artist in artists %}
-            <a class="list-group-item" href="{{ url_for('main.artist', artist_name_en=artist.artist_name_en) }}">{{ artist.artist_name_en }}{{ ' aka ' + artist.nickname if artist.nickname else '' }}</a>
-            {% endfor %}
-        </ul>
+            <ul class="list-group">
+                {% for artist in artists %}
+                <a class="list-group-item" href="{{ url_for('main.artist', artist_name_en=artist.artist_name_en) }}">{{ artist.artist_name_en }}{{ ' aka ' + artist.nickname if artist.nickname else '' }}</a>
+                {% endfor %}
+            </ul>
         </p>
     </div>
 {% endblock %}

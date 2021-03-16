@@ -26,12 +26,12 @@
                 {% if photo.author_url %}
                 <p>
                     <small>
-                        Photo by <a href="{{ photo.author_url }}">{{ photo.author_name if photo.author_name else photo.author_url }}</a>
+                        {{ _("Photo by") + " " }} <a href="{{ photo.author_url }}">{{ photo.author_name if photo.author_name else photo.author_url }}</a>
                     </small>
                 </p>
                 {% elif photo.author_name %}
                 <p>
-                    <small>Photo by {{ photo.author_name }}</small>
+                    <small>{{ _("Photo by") + " " }} {{ photo.author_name }}</small>
                 </p>
                 {% endif %}
                 {% endfor%}
@@ -39,7 +39,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card shadow">
                     <div class="card-header h6">
-                        Location
+                        {{ _("Location") }}
                     </div>
                     <div class="card-body">
                         <div class="card-text">
@@ -59,7 +59,7 @@
                 {% if mural.artist_name_en != 'unknown' %}
                 <div class="card shadow mt-4">
                     <div class="card-header h6">
-                        Artist
+                        {{ _("Artist") }}
                     </div>
                     <div class="card-body">
                         <div class="card-text row justify-content-center">
