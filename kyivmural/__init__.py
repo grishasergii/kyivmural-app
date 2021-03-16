@@ -1,11 +1,11 @@
 """create and configure flask app"""
 import os
+from datetime import datetime
 
 from flask import Flask, current_app, g, redirect, url_for
 from flask_babel import Babel
 
 from config import Config
-from datetime import datetime
 
 babel = Babel()
 
@@ -63,7 +63,7 @@ def create_app(config_class=Config):
 
     @app.context_processor
     def inject_now():
-        return {'now': datetime.utcnow()}
+        return {"now": datetime.utcnow()}
 
     return app
 
