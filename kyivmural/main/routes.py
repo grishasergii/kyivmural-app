@@ -1,4 +1,6 @@
 """Describes main routes"""
+import random
+
 from flask import render_template, request
 
 from kyivmural.main import bp
@@ -16,7 +18,21 @@ from kyivmural.queries.queries import (
 def index():
     """Landing page"""
     _murals = get_all_murals()
-    return render_template("index.html", title="KYIVMURAL", murals=_murals)
+    random_murals = random.choices(_murals, k=4)
+    murals_count = len(_murals)
+    _artists = set()
+    for _mural in _murals:
+        _artists.add(_mural["artist_name_en"])
+    _artists.discard("unknown")
+    artists_count = len(_artists)
+    return render_template(
+        "index.html",
+        title="KYIVMURAL",
+        murals=_murals,
+        random_murals=random_murals,
+        murals_count=murals_count,
+        artists_count=artists_count,
+    )
 
 
 @bp.route("/murals")
@@ -47,3 +63,9 @@ def artist(artist_name_en):
     _artist = get_artist(artist_name_en)
     _murals = get_murals_by_artist(artist_name_en)
     return render_template("artist/detail_view.html", artist=_artist, murals=_murals)
+
+
+@bp.route("/about")
+def about():
+    """About page"""
+    return render_template("about.html")

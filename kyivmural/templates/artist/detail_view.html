@@ -1,13 +1,31 @@
 {% extends "base.html" %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/card-thumbnail.css')}}">
+{% endblock %}
+
 {% block content %}
-    <h1>{{ artist.artist_name_en }}{{ ' aka ' + artist.nickname if artist.nickname else '' }}</h1>
-    <h2>Murals:</h2>
-    {% for mural in murals %}
-    <div>
-        <p>
-            Mural {{ mural.id }} located at {{ mural.geo_position.latitude }}, {{ mural.geo_position.longitude }}
-            <a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">more</a>
-        </p>
+    <div class="container mt-4">
+        <h1>{{ artist.artist_name_en }}<small class="text-muted">{{ ' aka ' + artist.nickname if artist.nickname else '' }}</small></h1>
+        {% if artist.webpage_url %}
+            <p>
+                <em>
+                    <a href="{{ artist.webpage_url }}">{{ artist.webpage_url }}</a>
+                </em>
+            </p>
+        {% endif %}
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        {% for mural in murals %}
+            <div class="col mb-4">
+                <div class="card">
+                    <a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">
+                        <img src="{{ mural.thumbnail }}" class="card-img-top card-thumbnail">
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
     </div>
-    {% endfor %}
 {% endblock %}

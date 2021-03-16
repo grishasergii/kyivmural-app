@@ -1,5 +1,6 @@
 """create and configure flask app"""
 import os
+from datetime import datetime
 
 from flask import Flask, current_app, g, redirect, url_for
 from flask_babel import Babel
@@ -22,6 +23,9 @@ def create_app(config_class=Config):
     app.jinja_env.globals.update(get_locale=get_locale)  # pylint: disable=no-member
     app.jinja_env.globals.update(  # pylint: disable=no-member
         GOOGLE_MAPS_API_KEY=os.environ["GOOGLE_MAPS_API_KEY"]
+    )
+    app.jinja_env.globals.update(  # pylint: disable=no-member
+        GOOGLE_ANALYTICS_ID=os.environ["GOOGLE_ANALYTICS_ID"]
     )
 
     @app.route("/")
@@ -57,10 +61,14 @@ def create_app(config_class=Config):
     app.register_blueprint(main_bp)
     app.register_blueprint(errors_bp)
 
+    @app.context_processor
+    def inject_now():  # pylint: disable=unused-variable
+        return {"now": datetime.utcnow()}
+
     return app
 
 
 @babel.localeselector
 def get_locale():
     """Returns app language code"""
-    return g.get("lang_code", current_app.config["LANGUAGES"])
+    return g.get("lang_code", current_app.config["DEFAULT_LANG_CODE"])
