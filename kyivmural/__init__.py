@@ -68,4 +68,4 @@ def create_app(config_class=Config):
 @babel.localeselector
 def get_locale():
     """Returns app language code"""
-    return g.get("lang_code", current_app.config["LANGUAGES"])
+    return g.get("lang_code", current_app.config["DEFAULT_LANG_CODE"])
