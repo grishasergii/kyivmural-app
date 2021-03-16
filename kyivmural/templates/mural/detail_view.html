@@ -1,5 +1,25 @@
 {% extends "base.html" %}
 
+{% block meta %}
+    {{ super() }}
+    <meta property="og:url" content="{{ request.url }}" />
+    <meta property="og:type" content="place" />
+    <meta property="og:title" content="Mural" />
+    {% if {{ mural.description.get(get_locale()).description }} %}
+        <meta property="og:description" content="{{ mural.description.get(get_locale()).description }}" />
+    {% endif %}
+    <meta property="og:image" content="{{ mural.thumbnail }}" />
+    <meta property="place:location:latitude"  content="{{ mural.geo_position.latitude }}" />
+    <meta property="place:location:longitude" content="{{ mural.geo_position.longitude }}" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kyivmural" />
+    <meta name="twitter:title" content="Kyivmural" />
+    <meta name="twitter:description" content="{{ mural.description.get(get_locale()).address }}" />
+    <meta name="twitter:image" content="{{ mural.thumbnail }}" />
+    <meta name="twitter:domain" content="kyivmural.com" />
+{% endblock %}
+
 {% block scripts %}
     {{ super() }}
     <script>
