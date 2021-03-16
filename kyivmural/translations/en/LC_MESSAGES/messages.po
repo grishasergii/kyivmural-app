@@ -1,0 +1,136 @@
+# English translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-16 19:18+0100\n"
+"PO-Revision-Date: 2021-03-16 19:51+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: kyivmural/templates/about.html:5 kyivmural/templates/base.html:11
+#: kyivmural/templates/base.html:18
+msgid "Kyivmural"
+msgstr ""
+
+#: kyivmural/templates/about.html:5
+msgid "kyivmural_definition"
+msgstr ""
+"is an attempt to collect information about mural paintings in Kyiv: their"
+" locations, history and artists"
+
+#: kyivmural/templates/about.html:8
+msgid "contact_me_paragraph_1"
+msgstr ""
+"Is some artwork missing? Do you have better pictures? Is any information "
+"inaccurate? Do you want to contribute? Found grammar errors? Feel free to"
+" contact me"
+
+#: kyivmural/templates/about.html:9
+msgid "contact_me_paragraph_2"
+msgstr "I may not answer immediately, but I will definitely read your email!"
+
+#: kyivmural/templates/about.html:12
+msgid "reference_statement"
+msgstr ""
+"An active link to www.kyivmural.com is mandatory when using any "
+"information from this website"
+
+#: kyivmural/templates/base.html:25 kyivmural/templates/mural/all.html:11
+msgid "Murals"
+msgstr ""
+
+#: kyivmural/templates/artist/all.html:5 kyivmural/templates/base.html:28
+msgid "Artists"
+msgstr ""
+
+#: kyivmural/templates/base.html:31
+msgid "About"
+msgstr ""
+
+#: kyivmural/templates/index.html:55
+msgid "The Murals of Kyiv"
+msgstr ""
+
+#: kyivmural/templates/index.html:57
+msgid "introduction_paragraph"
+msgstr ""
+"Explore street art in Kyiv. Starting from 2014 large murals have been "
+"appearing across Kyiv and now they decorate narrow lanes and wide avenues"
+" in different parts of the city. These artworks are made by both "
+"international and local artists and they put Kyiv on the international "
+"street art map"
+
+#: kyivmural/templates/index.html:57
+msgid "Kyivmural presents"
+msgstr ""
+
+#: kyivmural/templates/index.html:57
+msgid "artworks"
+msgstr ""
+
+#: kyivmural/templates/index.html:57
+msgid "and"
+msgstr ""
+
+#: kyivmural/templates/index.html:57
+msgid "artists"
+msgstr ""
+
+#: kyivmural/templates/index.html:60
+msgid "Discover"
+msgstr ""
+
+#: kyivmural/templates/index.html:62
+msgid ""
+"Discover four randomly selected artworks. Refresh the page to get new "
+"suggestions"
+msgstr ""
+
+#: kyivmural/templates/errors/404.html:4
+msgid "Not Found"
+msgstr ""
+
+#: kyivmural/templates/errors/404.html:5
+msgid "What you are looking for is not there"
+msgstr ""
+
+#: kyivmural/templates/errors/404.html:6 kyivmural/templates/errors/500.html:6
+msgid "Back"
+msgstr ""
+
+#: kyivmural/templates/errors/500.html:4
+msgid "An unexpected error has occurred"
+msgstr ""
+
+#: kyivmural/templates/errors/500.html:5
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr ""
+
+#: kyivmural/templates/mural/all.html:26
+msgid "See more"
+msgstr ""
+
+#: kyivmural/templates/mural/detail_view.html:29
+#: kyivmural/templates/mural/detail_view.html:34
+msgid "Photo by"
+msgstr ""
+
+#: kyivmural/templates/mural/detail_view.html:42
+msgid "Location"
+msgstr ""
+
+#: kyivmural/templates/mural/detail_view.html:62
+msgid "Artist"
+msgstr ""
+
