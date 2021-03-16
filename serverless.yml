@@ -32,6 +32,7 @@ functions:
       KYIVMURAL_API_ENDPOINT: ${env:KYIVMURAL_API_ENDPOINT}
       DEFAULT_LANG_CODE: ${env:DEFAULT_LANG_CODE}
       GOOGLE_MAPS_API_KEY: ${env:GOOGLE_MAPS_API_KEY}
+      GOOGLE_ANALYTICS_ID: ${env:GOOGLE_ANALYTICS_ID}
     events:
       - http: ANY /
       - http: "ANY {proxy+}"
