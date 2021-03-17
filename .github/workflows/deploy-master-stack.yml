@@ -31,9 +31,9 @@ jobs:
         with:
           args: --stage $BRANCH
         env:
-          KYIVMURAL_API_ENDPOINT: ${{ secrets.KYIVMURAL_API_ENDPOINT }}
-          KYIVMURAL_API_ID: ${{ secrets.KYIVMURAL_API_ID }}
-          KYIVMURAL_API_STAGE: ${{ secrets.KYIVMURAL_API_STAGE }}
+          KYIVMURAL_API_ENDPOINT: ${{ secrets.KYIVMURAL_API_ENDPOINT_MASTER }}
+          KYIVMURAL_API_ID: ${{ secrets.KYIVMURAL_API_ID_MASTER }}
+          KYIVMURAL_API_STAGE: ${{ secrets.KYIVMURAL_API_STAGE_MASTER }}
           DEFAULT_LANG_CODE: ${{ secrets.DEFAULT_LANG_CODE }}
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
