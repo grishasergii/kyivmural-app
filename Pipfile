@@ -7,6 +7,7 @@ name = "pypi"
 flask = "*"
 aws-requests-auth = "*"
 flask-babel = "*"
+python-dotenv = "*"
 
 [dev-packages]
 pylint = "*"
@@ -20,7 +21,7 @@ mypy = "*"
 boto3 = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
 
 [pipenv]
 allow_prereleases = true

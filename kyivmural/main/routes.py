@@ -69,3 +69,9 @@ def artist(artist_name_en):
 def about():
     """About page"""
     return render_template("about.html")
+
+
+@bp.route("/support-ukraine")
+def support_ukraine():
+    """About page"""
+    return render_template("support-ukraine.html")
