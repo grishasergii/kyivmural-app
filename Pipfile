@@ -4,13 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
+flask = "==1.*"
 aws-requests-auth = "*"
 flask-babel = "*"
+python-dotenv = "*"
+markupsafe = "==2.0.1"
 
 [dev-packages]
 pylint = "*"
-black = "*"
+black = "==21.10b0"
 pytest = "*"
 bump2version = "*"
 isort = "*"
@@ -20,7 +22,7 @@ mypy = "*"
 boto3 = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
 
 [pipenv]
 allow_prereleases = true

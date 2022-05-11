@@ -1,12 +1,11 @@
 ---
 service: kyivmural-app
-
-variablesResolutionMode: 20210219
+frameworkVersion: "3"
 useDotenv: true
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.9
   stage: test
   region: eu-central-1
   stackTags:
@@ -23,7 +22,6 @@ provider:
             - !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${env:KYIVMURAL_API_ID}/${env:KYIVMURAL_API_STAGE}/GET/*"
   apiGateway:
     shouldStartNameWithService: true
-  lambdaHashingVersion: 20201221
 
 functions:
   kyivmural-app:
@@ -34,16 +32,16 @@ functions:
       GOOGLE_MAPS_API_KEY: ${env:GOOGLE_MAPS_API_KEY}
       GOOGLE_ANALYTICS_ID: ${env:GOOGLE_ANALYTICS_ID}
     events:
-      - http: ANY /
-      - http: "ANY {proxy+}"
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY
 
 custom:
   wsgi:
     app: app.app
-    pythonBin: python
-    packRequirements: false
-  pythonRequirements:
-    dockerPip: non-linux
 
 plugins:
   - serverless-wsgi

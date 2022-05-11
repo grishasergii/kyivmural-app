@@ -56,7 +56,7 @@ def create_app(config_class=Config):
         lang_code = values.pop("lang_code", current_app.config["DEFAULT_LANG_CODE"])
         if lang_code not in current_app.config["LANGUAGES"]:
             lang_code = current_app.config["DEFAULT_LANG_CODE"]
-        g.lang_code = lang_code
+        g.lang_code = lang_code  # pylint: disable=assigning-non-slot
 
     app.register_blueprint(main_bp)
     app.register_blueprint(errors_bp)

@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.9
       - name: Install pipenv
         run: python -m pip install --upgrade pip wheel pipenv
       - name: Install dependencies
@@ -29,8 +29,8 @@ jobs:
         run: pipenv run flake8 $SOURCE_FOLDER
       - name: Isort
         run: pipenv run isort $SOURCE_FOLDER --profile black --check-only
-      - name: Black
-        run: pipenv run black $SOURCE_FOLDER --check
+      # - name: Black
+      #   run: pipenv run black $SOURCE_FOLDER --check
 
   yaml-linter:
     name: Lint YAML
@@ -58,17 +58,17 @@ jobs:
           aws-region: ${{ secrets.AWS_KYIVMURAL_REGION }}
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.9
       - name: Install pipenv
         run: python -m pip install --upgrade pip wheel pipenv
       - uses: actions/setup-node@v2
         with:
           node-version: 14
       - run: npm ci
-      - name: Provision PR stack
-        uses: dhollerbach/github-action-serverless-with-python-requirements@master
-        with:
-          args: --stage $BRANCH
+      - name: Install Serveless
+        run: npm install -g serverless
+      - name: Deploy
+        run: serverless deploy --stage pr-${{ github.event.number }}
         env:
           KYIVMURAL_API_ENDPOINT: ${{ secrets.KYIVMURAL_API_ENDPOINT }}
           KYIVMURAL_API_ID: ${{ secrets.KYIVMURAL_API_ID }}
