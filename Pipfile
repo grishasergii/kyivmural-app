@@ -4,10 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
+flask = "==1.*"
 aws-requests-auth = "*"
 flask-babel = "*"
 python-dotenv = "*"
+markupsafe = "==2.0.1"
 
 [dev-packages]
 pylint = "*"
