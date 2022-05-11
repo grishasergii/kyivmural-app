@@ -9,10 +9,7 @@ jobs:
   CheckVersion:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-      with:
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+    - uses: actions/checkout@v2
     - name: Read version
       id: read_version
       run: |
