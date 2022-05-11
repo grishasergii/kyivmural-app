@@ -26,14 +26,15 @@ jobs:
         with:
           node-version: 14
       - run: npm ci
-      - name: Provision PR stack
-        uses: dhollerbach/github-action-serverless-with-python-requirements@master
-        with:
-          args: --stage $BRANCH
+      - name: Install Serveless
+        run: npm install -g serverless
+      - name: Deploy
+        run: serverless deploy --stage master
         env:
-          KYIVMURAL_API_ENDPOINT: ${{ secrets.KYIVMURAL_API_ENDPOINT_MASTER }}
-          KYIVMURAL_API_ID: ${{ secrets.KYIVMURAL_API_ID_MASTER }}
-          KYIVMURAL_API_STAGE: ${{ secrets.KYIVMURAL_API_STAGE_MASTER }}
+          KYIVMURAL_API_ENDPOINT: ${{ secrets.KYIVMURAL_API_ENDPOINT }}
+          KYIVMURAL_API_ID: ${{ secrets.KYIVMURAL_API_ID }}
+          KYIVMURAL_API_STAGE: ${{ secrets.KYIVMURAL_API_STAGE }}
           DEFAULT_LANG_CODE: ${{ secrets.DEFAULT_LANG_CODE }}
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
-          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+          GOOGLE_ANALYTICS_ID: bum
+
