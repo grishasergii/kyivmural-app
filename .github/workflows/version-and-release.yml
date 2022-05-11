@@ -25,8 +25,6 @@ jobs:
     - name: Create Release
       if: ${{ steps.check_tag.outputs.exists == 'false' }}
       uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       with:
         tag_name: ${{ steps.read_version.outputs.version }}
         name: ${{ steps.read_version.outputs.version }}
