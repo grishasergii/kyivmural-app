@@ -29,8 +29,8 @@ jobs:
         run: pipenv run flake8 $SOURCE_FOLDER
       - name: Isort
         run: pipenv run isort $SOURCE_FOLDER --profile black --check-only
-      - name: Black
-        run: pipenv run black $SOURCE_FOLDER --check
+      # - name: Black
+      #   run: pipenv run black $SOURCE_FOLDER --check
 
   yaml-linter:
     name: Lint YAML
