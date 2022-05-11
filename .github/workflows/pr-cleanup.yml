@@ -18,11 +18,10 @@ jobs:
         with:
           node-version: 14
       - run: npm ci
-      - name: Remove PR stack
-        uses: serverless/github-action@master
-        with:
-          args: -c "serverless remove --stage pr-${{ github.event.number }}"
-          entrypoint: /bin/bash
+      - name: Install Serveless
+        run: npm install -g serverless
+      - name: Delete pr stack
+        run: serverless remove --stage pr-${{ github.event.number }}
         env:
           KYIVMURAL_API_ENDPOINT: ${{ secrets.KYIVMURAL_API_ENDPOINT }}
           KYIVMURAL_API_ID: ${{ secrets.KYIVMURAL_API_ID }}
