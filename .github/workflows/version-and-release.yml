@@ -9,7 +9,7 @@ jobs:
   check-version:
     runs-on: ubuntu-latest
     outputs:
-      has-new-release: ${{ steps.check_tag.outputs.exists }}
+      has-new-release: ${{ steps.check_tag.outputs.exists == 'false' }}
     steps:
     - uses: actions/checkout@v2
     - name: Read version
