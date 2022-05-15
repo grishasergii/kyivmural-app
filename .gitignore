@@ -147,3 +147,5 @@ wsgi_handler.py
 
 # NPM
 node_modules
+
+.DS_Store
