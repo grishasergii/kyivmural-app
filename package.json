@@ -1,12 +1,13 @@
 {
   "name": "kyivmural-app",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Kyivmural app",
   "dependencies": {
-    "serverless-python-requirements": "^5.1.0",
     "serverless-wsgi": "^1.7.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "serverless-python-requirements": "^6.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/grishasergii/kyivmural-app.git"
