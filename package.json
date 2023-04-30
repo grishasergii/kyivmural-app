@@ -1,6 +1,6 @@
 {
   "name": "kyivmural-app",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Kyivmural app",
   "dependencies": {
     "serverless-wsgi": "^1.7.6"
