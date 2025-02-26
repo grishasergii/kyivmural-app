@@ -50,7 +50,7 @@ jobs:
     env:
       BRANCH: pr-${{ github.event.number }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_KYIVMURAL_ACCESS_KEY_ID }}
