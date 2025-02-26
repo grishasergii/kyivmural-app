@@ -11,10 +11,10 @@ jobs:
     env:
       SOURCE_FOLDER: kyivmural
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.13
       - name: Install pipenv
         run: python -m pip install --upgrade pip wheel pipenv
       - name: Install dependencies
@@ -36,7 +36,7 @@ jobs:
     name: Lint YAML
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ibiqlik/action-yamllint@v3.0.0
         with:
           file_or_dir: serverless.yml
@@ -50,20 +50,20 @@ jobs:
     env:
       BRANCH: pr-${{ github.event.number }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: aws-actions/configure-aws-credentials@v1
+      - uses: actions/checkout@v5
+      - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_KYIVMURAL_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_KYIVMURAL_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_KYIVMURAL_REGION }}
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.13
       - name: Install pipenv
         run: python -m pip install --upgrade pip wheel pipenv
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 24
       - run: npm ci
       - name: Install Serveless
         run: npm install -g serverless
