@@ -1,4 +1,5 @@
 """Main routes"""
+
 # pylint: disable=cyclic-import
 from flask import Blueprint
 

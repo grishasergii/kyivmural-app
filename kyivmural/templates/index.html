@@ -3,47 +3,45 @@
 {% block styles %}
     {{ super() }}
     <link rel="stylesheet" href="{{url_for('static', filename='css/card-thumbnail.css')}}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         function initMap() {
-            const kyiv_map_center = { lat: 50.450487, lng: 30.519516 };
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 12,
-                center: kyiv_map_center,
-            });
+            const kyivMapCenter = { lat: 50.450487, lng: 30.519516 };
+            const map = L.map("map").setView(kyivMapCenter, 12);
+
+            // Add OpenStreetMap tiles
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
 
             {% for mural in murals %}
-                const content_string_{{ loop.index }} =
+                const popupContent_{{ loop.index }} =
                     '<p><a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">{{ _("more") }}...</a></p>' +
                     '<p><a href="{{ url_for('main.mural', mural_id=mural.id, artist_name_en=mural.artist_name_en) }}">' +
                     '<img src="{{ url_for('static', filename='img/1x1.jpg') }}" style="max-height: 320px;" id="lazy-{{ mural.id }}" data-src="{{ mural.thumbnail }}">' +
                     '</a></p>';
 
-                const info_window_{{ loop.index }} = new google.maps.InfoWindow({
-                    content: content_string_{{ loop.index }}
-                });
+                const marker_{{ loop.index }} = L.marker([{{ mural.geo_position.latitude }}, {{ mural.geo_position.longitude }}]).addTo(map);
+                const popup_{{ loop.index }} = L.popup({ maxWidth: "auto", minWidth: 200 }).setContent(popupContent_{{ loop.index }});
+                marker_{{ loop.index }}.bindPopup(popup_{{ loop.index }});
 
-                google.maps.event.addListener(info_window_{{ loop.index }}, "domready", function(img_id){
-                    return function () {
-                        var lazy_img = document.getElementById(img_id);
-                        if (lazy_img) {
-                            lazy_img.src = lazy_img.getAttribute('data-src');
+                map.on("popupopen", function (e) {
+                    const popupElement = e.popup.getElement();
+                    if (popupElement) {
+                        const lazyImg = popupElement.querySelector("img[data-src]");
+                        if (lazyImg && !lazyImg.src.includes("data-src")) {
+                            lazyImg.src = lazyImg.getAttribute("data-src");
                         }
-                    };
-                }('lazy-{{ mural.id }}'));
-
-                const marker_{{ loop.index }} = new google.maps.Marker({
-                    position: { lat: {{ mural.geo_position.latitude }}, lng: {{ mural.geo_position.longitude }} },
-                    map: map,
-                });
-                marker_{{ loop.index }}.addListener("click", () => {
-                    info_window_{{ loop.index }}.open(map, marker_{{ loop.index }});
+                    }
                 });
             {% endfor %}
         }
+        document.addEventListener("DOMContentLoaded", initMap);
     </script>
 {% endblock %}
 
@@ -75,9 +73,4 @@
             {% endfor %}
         </div>
     </div>
-
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap&libraries=&v=weekly"
-      async
-    ></script>
 {% endblock %}

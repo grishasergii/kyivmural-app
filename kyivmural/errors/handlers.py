@@ -1,4 +1,5 @@
 """Error routes"""
+
 from flask import render_template
 
 from kyivmural.errors import bp

@@ -5,12 +5,12 @@ useDotenv: true
 
 provider:
   name: aws
-  runtime: python3.9
+  runtime: python3.13
   stage: test
   region: eu-central-1
   stackTags:
     Name: Kyivmural-App
-    Version: 0.2.7
+    Version: 1.0.0
     Application: Kyivmural
     Component: App
   iam:
@@ -29,7 +29,6 @@ functions:
     environment:
       KYIVMURAL_API_ENDPOINT: ${env:KYIVMURAL_API_ENDPOINT}
       DEFAULT_LANG_CODE: ${env:DEFAULT_LANG_CODE}
-      GOOGLE_MAPS_API_KEY: ${env:GOOGLE_MAPS_API_KEY}
       GOOGLE_ANALYTICS_ID: ${env:GOOGLE_ANALYTICS_ID}
     events:
       - http:

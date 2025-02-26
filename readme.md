@@ -1,3 +1,3 @@
 # Kyivmural app
 
-version 0.2.7
+version 1.0.0

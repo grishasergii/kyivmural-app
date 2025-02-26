@@ -8,18 +8,18 @@ jobs:
     name: Delete PR stack
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: aws-actions/configure-aws-credentials@v1
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_KYIVMURAL_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_KYIVMURAL_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_KYIVMURAL_REGION }}
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 22
       - run: npm ci
       - name: Install Serveless
-        run: npm install -g serverless
+        run: npm install -g serverless@3
       - name: Delete pr stack
         run: serverless remove --stage pr-${{ github.event.number }}
         env:
@@ -27,5 +27,4 @@ jobs:
           KYIVMURAL_API_ID: ${{ secrets.KYIVMURAL_API_ID }}
           KYIVMURAL_API_STAGE: ${{ secrets.KYIVMURAL_API_STAGE }}
           DEFAULT_LANG_CODE: ${{ secrets.DEFAULT_LANG_CODE }}
-          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
           GOOGLE_ANALYTICS_ID: bum
