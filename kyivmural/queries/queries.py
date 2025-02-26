@@ -1,4 +1,5 @@
 """Queries to Kyivmural API"""
+
 from urllib.parse import urlparse
 
 import requests

@@ -1,4 +1,5 @@
 """Describes main routes"""
+
 import random
 
 from flask import render_template, request

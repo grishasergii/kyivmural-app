@@ -1,4 +1,5 @@
 """create and configure flask app"""
+
 import os
 from datetime import datetime
 
@@ -10,6 +11,11 @@ from config import Config
 babel = Babel()
 
 
+def get_locale():
+    """Returns app language code"""
+    return g.get("lang_code", current_app.config["DEFAULT_LANG_CODE"])
+
+
 def create_app(config_class=Config):
     """Create an instance of an app"""
     app = Flask(__name__)
@@ -19,7 +25,7 @@ def create_app(config_class=Config):
     app.config["AWS_REGION"] = os.environ["AWS_DEFAULT_REGION"]
     app.config["DEFAULT_LANG_CODE"] = os.environ["DEFAULT_LANG_CODE"]
 
-    babel.init_app(app)
+    babel.init_app(app, locale_selector=get_locale)
     app.jinja_env.globals.update(get_locale=get_locale)  # pylint: disable=no-member
     app.jinja_env.globals.update(  # pylint: disable=no-member
         GOOGLE_MAPS_API_KEY=os.environ["GOOGLE_MAPS_API_KEY"]
@@ -66,9 +72,3 @@ def create_app(config_class=Config):
         return {"now": datetime.utcnow()}
 
     return app
-
-
-@babel.localeselector
-def get_locale():
-    """Returns app language code"""
-    return g.get("lang_code", current_app.config["DEFAULT_LANG_CODE"])
