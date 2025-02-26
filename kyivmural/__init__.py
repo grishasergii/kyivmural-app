@@ -28,9 +28,6 @@ def create_app(config_class=Config):
     babel.init_app(app, locale_selector=get_locale)
     app.jinja_env.globals.update(get_locale=get_locale)  # pylint: disable=no-member
     app.jinja_env.globals.update(  # pylint: disable=no-member
-        GOOGLE_MAPS_API_KEY=os.environ["GOOGLE_MAPS_API_KEY"]
-    )
-    app.jinja_env.globals.update(  # pylint: disable=no-member
         GOOGLE_ANALYTICS_ID=os.environ["GOOGLE_ANALYTICS_ID"]
     )
 

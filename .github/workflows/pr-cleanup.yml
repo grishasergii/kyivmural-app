@@ -27,5 +27,4 @@ jobs:
           KYIVMURAL_API_ID: ${{ secrets.KYIVMURAL_API_ID }}
           KYIVMURAL_API_STAGE: ${{ secrets.KYIVMURAL_API_STAGE }}
           DEFAULT_LANG_CODE: ${{ secrets.DEFAULT_LANG_CODE }}
-          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
           GOOGLE_ANALYTICS_ID: bum
